@@ -1,12 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Interactive Website</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
+    }
+
+    body{
+        background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+        color:white;
+        overflow-x:hidden;
+    }
+
+    /* Animated Background */
+    .background{
+        position:fixed;
+        width:100%;
+        height:100%;
+        z-index:-1;
+        overflow:hidden;
+    }
+
+    .circle{
+        position:absolute;
+        border-radius:50%;
+        background:rgba(255,255,255,0.08);
+        animation:float 12s infinite linear;
+    }
+
+    @keyframes float{
+        from{
+            transform:translateY(100vh) rotate(0deg);
+        }
+        to{
+            transform:translateY(-120vh) rotate(360deg);
+        }
+    }
+
+    header{
+        text-align:center;
+        padding:80px 20px;
+    }
+
+    header h1{
+        font-size:4rem;
+        margin-bottom:15px;
+        background:linear-gradient(to right,#38bdf8,#a855f7);
+        -webkit-background-clip:text;
+        color:transparent;
+    }
+
+    header p{
+        font-size:1.2rem;
+        opacity:0.8;
+    }
+
+    .btn{
+        margin-top:25px;
+        padding:14px 30px;
+        border:none;
+        border-radius:30px;
+        background:linear-gradient(45deg,#06b6d4,#8b5cf6);
+        color:white;
+        font-size:1rem;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .btn:hover{
+        transform:scale(1.08);
+        box-shadow:0 0 20px rgba(139,92,246,0.6);
+    }
+
+    /* Cards */
+    .container{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:30px;
+        padding:50px 20px;
+    }
+
+    .card{
+        width:300px;
+        padding:30px;
+        border-radius:20px;
+        background:rgba(255,255,255,0.08);
+        backdrop-filter:blur(10px);
+        transition:0.4s;
+        position:relative;
+        overflow:hidden;
+    }
+
+    .card::before{
+        content:"";
+        position:absolute;
+        width:150px;
+        height:150px;
+        background:rgba(255,255,255,0.08);
+        border-radius:50%;
+        top:-40px;
+        right:-40px;
+    }
+
+    .card:hover{
+        transform:translateY(-10px) rotate(1deg);
+        background:rgba(255,255,255,0.12);
+    }
+
+    .card h2{
+        margin-bottom:15px;
+        color:#67e8f9;
+    }
+
+    .card p{
+        line-height:1.6;
+        opacity:0.9;
+    }
+
+    /* Mouse Glow */
+    .glow{
+        position:fixed;
+        width:200px;
+        height:200px;
+        border-radius:50%;
+        background:radial-gradient(circle, rgba(168,85,247,0.25), transparent 70%);
+        pointer-events:none;
+        transform:translate(-50%, -50%);
+        z-index:-1;
+    }
+
+    footer{
+        text-align:center;
+        padding:40px;
+        opacity:0.7;
+    }
+
+    @media(max-width:768px){
+        header h1{
+            font-size:2.5rem;
+        }
+
+        .container{
+            flex-direction:column;
+            align-items:center;
+        }
+    }
+</style>
 </head>
+
 <body>
-<h1>Hello World!</h1>
-<p>This is my first GitHub Pages site </p>
+
+<div class="background"></div>
+<div class="glow"></div>
+
+<header>
+    <h1>Future Interactive Site</h1>
+    <p>Hover, click, and explore the digital galaxy 🚀</p>
+    <button class="btn" onclick="showMessage()">Click Me</button>
+</header>
+
+<section class="container">
+
+    <div class="card">
+        <h2>Fast Performance</h2>
+        <p>
+            Lightning-speed animations and smooth transitions
+            designed to feel futuristic.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Responsive Design</h2>
+        <p>
+            Looks beautiful on desktop, tablet, and mobile devices.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Interactive UI</h2>
+        <p>
+            Hover effects, floating particles, and glowing cursor magic.
+        </p>
+    </div>
+
+</section>
+
+<footer>
+    Crafted with HTML, CSS & JavaScript ✨
+</footer>
+
+<script>
+
+    // Floating circles
+    const background = document.querySelector(".background");
+
+    for(let i=0; i<25; i++){
+        const circle = document.createElement("div");
+        circle.classList.add("circle");
+
+        const size = Math.random() * 80 + 20;
+
+        circle.style.width = size + "px";
+        circle.style.height = size + "px";
+
+        circle.style.left = Math.random() * window.innerWidth + "px";
+        circle.style.animationDuration = (Math.random() * 10 + 8) + "s";
+        circle.style.opacity = Math.random();
+
+        background.appendChild(circle);
+    }
+
+    // Button interaction
+    function showMessage(){
+        alert("🚀 Welcome to your interactive website!");
+    }
+
+    // Mouse glow effect
+    const glow = document.querySelector(".glow");
+
+    document.addEventListener("mousemove",(e)=>{
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+    });
+
+</script>
+
 </body>
 </html>
