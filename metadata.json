@@ -1,0 +1,6 @@
+{
+  "name": "Gaurav More Portfolio",
+  "description": "Interactive Resume Portfolio website for Gaurav More, Digital Marketing Specialist & SEO Technologist, featuring a live AI-powered SEO & Keyword Research Assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
